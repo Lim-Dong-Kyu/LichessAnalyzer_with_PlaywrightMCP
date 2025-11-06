@@ -39,6 +39,29 @@ lichess_analyzer/
 
 가장 빠르게 시작하려면 `QUICKSTART.md` 파일을 참고하세요.
 
+### Windows에서 빠른 실행
+
+```bash
+# 1. Backend 설정
+cd backend
+pip install -r requirements.txt
+
+# 2. Frontend 설정
+cd ../frontend
+npm install
+
+# 3. 환경 변수 설정 (선택사항)
+cd ..
+# .env 파일 생성 (LICHESS_API_TOKEN, OPENAI_API_KEY 등)
+
+# 4. 실행
+start.bat
+```
+
+`start.bat`을 실행하면 백엔드와 프론트엔드가 자동으로 시작됩니다.
+
+### 수동 실행
+
 ```bash
 # 1. Backend 설정
 cd backend
@@ -127,6 +150,14 @@ npm run dev
 ```
 
 ### 실행 순서
+
+#### 방법 1: 자동 실행 (Windows)
+
+1. Cursor에서 Playwright MCP 서버 설정 (이미 설정되어 있다면 생략 가능)
+2. `start.bat` 실행 - 백엔드와 프론트엔드가 자동으로 시작됩니다
+3. 브라우저에서 `http://localhost:3000` 접속
+
+#### 방법 2: 수동 실행
 
 1. Cursor에서 Playwright MCP 서버 설정 (이미 설정되어 있다면 생략 가능)
 2. Backend 실행 (포트 8000): `cd backend && uvicorn main:app --reload --port 8000`
