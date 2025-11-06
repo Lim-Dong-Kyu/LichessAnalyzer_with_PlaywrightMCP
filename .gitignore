@@ -35,6 +35,9 @@ build/
 *.swo
 *~
 
+# Cursor
+.cursor/
+
 # Test files
 .playwright-mcp/
 
