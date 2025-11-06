@@ -3,7 +3,8 @@
 ## 1단계: 프로젝트 클론 및 위치 이동
 
 ```bash
-cd c:\Projects\lichess_analyzer
+# 프로젝트 디렉토리로 이동
+cd path/to/lichess_analyzer
 ```
 
 ## 2단계: Backend 설정
@@ -143,11 +144,11 @@ npm run dev -- -p 3001
 ## 실행 순서 요약
 
 1. ✅ Backend 디렉토리에서 의존성 설치 (`pip install -r requirements.txt`)
-2. ✅ MCP SDK 설치 (`pip install mcp`)
-3. ✅ Backend 실행 (`uvicorn main:app --reload --port 8000`)
-4. ✅ Frontend 디렉토리에서 의존성 설치 (`npm install`)
-5. ✅ Frontend 실행 (`npm run dev`)
-6. ✅ 브라우저에서 `http://localhost:3000` 접속
+   - MCP SDK는 requirements.txt에 포함되어 있어 별도 설치 불필요
+2. ✅ Backend 실행 (`uvicorn main:app --reload --port 8000`)
+3. ✅ Frontend 디렉토리에서 의존성 설치 (`npm install`)
+4. ✅ Frontend 실행 (`npm run dev`)
+5. ✅ 브라우저에서 `http://localhost:3000` 접속
 
 
 

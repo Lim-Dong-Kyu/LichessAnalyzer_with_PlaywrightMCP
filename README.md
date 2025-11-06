@@ -33,8 +33,7 @@ lichess_analyzer/
 ├── backend/          # Python FastAPI 백엔드
 ├── mcp-client/       # Node.js MCP 클라이언트
 ├── frontend/         # Next.js 프론트엔드
-├── reports/          # JSON 리포트 저장소
-└── captures/         # 리플레이 이미지 저장소
+└── reports/          # JSON 리포트 저장소
 ```
 
 ## 빠른 시작
@@ -104,7 +103,7 @@ NEXT_PUBLIC_API_BASE=http://localhost:8000
 
 **참고**: 
 - 프로젝트 루트: `backend/env.example` 파일을 참고하여 `.env` 파일 생성
-- Frontend: `frontend/.env.example` 파일을 참고하여 `frontend/.env.local` 파일 생성
+- Frontend: 필요시 `frontend/.env.local` 파일을 직접 생성하여 `NEXT_PUBLIC_API_BASE` 설정
 - 모든 환경 변수는 선택사항이며, 설정하지 않으면 기본값이 사용됩니다.
 
 ### 1. Backend 설정
@@ -120,7 +119,7 @@ pip install -r requirements.txt
 - Cursor의 MCP 서버 설정이 필요합니다 (Cursor IDE에서 설정)
 - MCP 세션은 애플리케이션 시작 시 자동으로 초기화됩니다
 
-### 3. Frontend 설정
+### 2. Frontend 설정
 
 ```bash
 cd frontend
@@ -206,8 +205,8 @@ npm run dev
   - OpenAI SDK (AI 분석 기능)
   
 - **Frontend**: 
-  - Next.js 14+
-  - React
+  - Next.js 16.0.1
+  - React 19.2.0
   - TypeScript
   - Tailwind CSS
   
