@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse, FileResponse
-from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pathlib import Path
@@ -112,13 +111,6 @@ async def http_exception_handler(request: Request, exc: HTTPException):
         content={"detail": exc.detail},
         headers=headers
     )
-
-# 정적 파일 서빙 (캡처는 Lichess API 직접 사용하므로 제거)
-reports_dir = Path(__file__).parent.parent / "reports"
-
-reports_dir.mkdir(exist_ok=True)
-
-app.mount("/static/reports", StaticFiles(directory=str(reports_dir)), name="reports")
 
 # 진행 상황 추적을 위한 전역 딕셔너리
 analysis_progress: dict[str, dict] = {}
@@ -816,20 +808,6 @@ async def open_research_tool(game_id: str, ply: int):
         raise HTTPException(status_code=500, detail=f"Failed to open research tool: {str(e)}")
 
 
-@app.get("/api/report/{game_id}")
-async def get_report(game_id: str):
-    """리포트 조회 (레거시 호환성)"""
-    report_path = reports_dir / f"{game_id}.json"
-    
-    if not report_path.exists():
-        raise HTTPException(status_code=404, detail="Report not found")
-    
-    with open(report_path, "r", encoding="utf-8") as f:
-        report_data = json.load(f)
-    
-    return JSONResponse(content=report_data)
-
-
 @app.get("/api/capture/{game_id}/{ply}")
 async def get_capture_url(game_id: str, ply: int):
     """보드 이미지 URL 반환 (프론트엔드에서 직접 사용)"""
@@ -911,12 +889,8 @@ async def get_progress(game_id: str):
 
 @app.get("/api/status/{game_id}")
 async def get_status(game_id: str):
-    """분석 상태 확인 (레거시 호환성)"""
-    report_path = reports_dir / f"{game_id}.json"
-    
-    if report_path.exists():
-        return {"status": "completed", "gameId": game_id}
-    elif game_id in analysis_progress:
+    """분석 상태 확인"""
+    if game_id in analysis_progress:
         progress = analysis_progress[game_id]
         return {"status": progress["status"], "gameId": game_id}
     else:

@@ -32,8 +32,7 @@ Lichess 공식 API와 Playwright MCP(Model Context Protocol)를 통합하여 체
 lichess_analyzer/
 ├── backend/          # Python FastAPI 백엔드
 ├── mcp-client/       # Node.js MCP 클라이언트
-├── frontend/         # Next.js 프론트엔드
-└── reports/          # JSON 리포트 저장소
+└── frontend/         # Next.js 프론트엔드
 ```
 
 ## 빠른 시작
@@ -176,9 +175,6 @@ npm run dev
 
 - `POST /api/research/{gameId}/{ply}` - Lichess 분석 도구 열기
   - Response: 열린 브라우저 URL
-
-- `GET /api/report/{gameId}` - 리포트 조회 (레거시)
-  - Response: AnalysisReport (JSON)
 
 - `GET /api/capture/{gameId}/{ply}` - 보드 이미지 URL 조회
   - Response: 보드 이미지 URL

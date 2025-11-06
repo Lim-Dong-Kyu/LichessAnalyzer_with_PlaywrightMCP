@@ -43,9 +43,7 @@ build/
 Thumbs.db
 
 # Project specific
-reports/*.json
 captures/*.png
-!reports/.gitkeep
 !captures/.gitkeep
 
 # Large files
